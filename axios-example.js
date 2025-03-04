@@ -1,12 +1,10 @@
 require('dotenv').config();
+const axios = require('axios');
 
 async function fetchData(endpoint) {
   try {
-    const response = await fetch(endpoint);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return await response.json();
+    const response = await axios.get(endpoint);
+    return response.data;
   } catch (error) {
     console.error('Error fetching data:', error.message);
     return null;
