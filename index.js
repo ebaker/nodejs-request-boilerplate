@@ -14,7 +14,7 @@ async function fetchData(endpoint) {
 }
 
 async function main() {
-  const endpoint = process.env.API_ENDPOINT || 'https://api.example.com/data';
+  const endpoint = process.env.API_ENDPOINT || 'https://jsonplaceholder.typicode.com/posts/1';
   const data = await fetchData(endpoint);
 
   if (data) {
@@ -23,4 +23,8 @@ async function main() {
   }
 }
 
-main();
+if (require.main === module) {
+  main();
+}
+
+module.exports = { fetchData };
